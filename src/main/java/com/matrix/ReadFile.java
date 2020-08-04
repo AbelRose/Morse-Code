@@ -39,7 +39,7 @@ public class ReadFile {
      */
     public static void writeFile(String str) {
         try {
-            File writeName = new File("output.txt"); // 相对路径，如果没有则要建立一个新的output.txt文件
+            File writeName = new File("src/main/resources/output.txt"); // 相对路径，如果没有则要建立一个新的output.txt文件
             writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
             try (FileWriter writer = new FileWriter(writeName);
                  BufferedWriter out = new BufferedWriter(writer)
