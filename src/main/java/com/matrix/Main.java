@@ -4,6 +4,17 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+
+    /**
+     *
+     * Todo
+     *
+     * 实现 用自定义的 语音包 读取自定义的文字
+     *
+     *
+     *
+     */
+
     public static void main(String[] args) throws Exception {
 //        Dom4j dom4j = new Dom4j();
 //        ReadFile rf = new ReadFile();
