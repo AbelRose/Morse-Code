@@ -11,13 +11,12 @@ import java.util.List;
 
 /**
  * Dom4j解析xml
- * @Author: abelrose
+ *
+ * @Author: AbelRose
  * @Date: 2020/7/29 20:39
  */
 public class Dom4j {
-
 //    String input = "";
-
     public static String parse(String input) throws Exception {
         //1.创建Reader对象
         SAXReader reader = new SAXReader();
@@ -29,9 +28,7 @@ public class Dom4j {
 //        System.out.println("====== 根节点为: " + rootElement.getQualifiedName() + " ======");
         Iterator iterator = rootElement.elementIterator();
 
-        /**
-         * convert one two three to 1 2 3
-         */
+        // convert one two three to 1 2 3
         switch (input){
             case "0":
                 input = "zero";
@@ -68,11 +65,9 @@ public class Dom4j {
                 break;
                 default:
                     // has problem !!!
+//                    System.out.println("defalut");
                     break;
-
-
         }
-
 
         while (iterator.hasNext()){
             Element node = (Element) iterator.next();
@@ -85,18 +80,14 @@ public class Dom4j {
             Iterator sub_iterator = node.elementIterator();
             while (sub_iterator.hasNext()){
                 Element nodeChild = (Element) sub_iterator.next();
-
                 String qualifiedName = nodeChild.getQualifiedName();
-
 //                System.out.println(nodeChild.getName());
 //                System.out.println(nodeChild.getStringValue());
-
                 if(input.equals(qualifiedName)){
 //                    System.out.println(nodeChild.getName());
 //                    System.out.println(nodeChild.getStringValue());
                     return nodeChild.getStringValue();
                 }
-
 //                System.out.println("节点名：" + nodeChild.getName());
 //                System.out.println("节点值：" + nodeChild.getStringValue());
 //                return nodeChild.getStringValue();
