@@ -11,8 +11,9 @@ public class Main {
      *
      * 实现 用自定义的 语音包 读取自定义的文字
      *
+     * 调用JS 大佬的库
      *
-     *
+     * 实现 噪音 设置另一个线程
      */
 
     public static void main(String[] args) throws Exception {
