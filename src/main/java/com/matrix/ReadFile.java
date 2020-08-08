@@ -2,10 +2,6 @@ package com.matrix;
 
 import java.io.*;
 
-/**
- * Created by Nickwong on 31/07/2018.
- * 根据1-8楼的建议，优化了代码
- */
 public class ReadFile {
 //    public static void main(String args[]) {
 //        readFile();
@@ -14,8 +10,8 @@ public class ReadFile {
     /**
      * 读入TXT文件
      */
-    public static String readFile() {
-        String pathname = "src/main/resources/test.txt"; // 绝对路径或相对路径都可以，写入文件时演示相对路径,读取以上路径的input.txt文件
+    public static String readFile(String filename) {
+        String pathname = ".\\src\\main\\resources\\" + filename + ".txt"; // 绝对路径或相对路径都可以，写入文件时演示相对路径,读取以上路径的input.txt文件
         //防止文件建立或读取失败，用catch捕捉错误并打印，也可以throw;
         //不关闭文件会导致资源的泄露，读写文件都同理
         //Java7的try-with-resources可以优雅关闭文件，异常时自动关闭文件；详细解读https://stackoverflow.com/a/12665271
@@ -39,7 +35,7 @@ public class ReadFile {
      */
     public static void writeFile(String str) {
         try {
-            File writeName = new File("src/main/resources/output.txt"); // 相对路径，如果没有则要建立一个新的output.txt文件
+            File writeName = new File(".\\src\\main\\resources\\morseCode.txt"); // 相对路径，如果没有则要建立一个新的output.txt文件
             writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
             try (FileWriter writer = new FileWriter(writeName);
                  BufferedWriter out = new BufferedWriter(writer)
@@ -54,7 +50,6 @@ public class ReadFile {
                  *
                  * 是否写成功? 是否有损坏? 是否会被篡改?
                  *
-                 * 设计到一些加密的问题 以后填写
                  *
                  */
 //                    out.write("我会写入文件啦2\r\n"); // \r\n即为换行
