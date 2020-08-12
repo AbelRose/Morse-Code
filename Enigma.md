@@ -169,11 +169,9 @@
 
 
 
-# Enigma机密码加密解密的实现
+### Enigma机密码加密解密的实现
 
-## 题目描述
-
-
+##### 题目描述
 
 二战时期，德军使用了一套名为Enigma的密码系统，是一种基于字符映射的密码系统。它的工作原理如下：
 
@@ -201,39 +199,43 @@
 
 反射器：ZYXWVUTSRQPONMLKJIHGFEDCBA
 
-使用时三个转子也可拆卸自由调节顺序，也就是说加密操作前的初始状态会有26­­*26*26*3!种。我们用6位字母来记录初始状态，并称为密钥。1-3位记录三个的转子的排列顺序（如BAC表示B转子放在最靠近键盘的位置）。4-6位记录三个转子的初始位置（如XYZ表示最靠近键盘的转子初始位置在X上）。
+使用时三个转子也可拆卸自由**调节顺序**，也就是说加密操作前的初始状态会有26­­*26*26*3!种。
+
+我们用**6位字母**来记录初始状态，并称为**密钥**。
+
+> 1-3位记录三个的转子的排列顺序（如BAC表示B转子放在最靠近键盘的位置）。
+>
+> 4-6位记录三个转子的初始位置（如XYZ表示最靠近键盘的转子初始位置在X上）。
 
 现在提供你一串密文和密钥，请给出它的原文。
 
 
 
-## 输入
+##### 输入
 
 第一行输入整数n(0<n<10000)，代表测试用例的数量。
 
 接下来每个用例由两行组成，第一行由六个大定字母组成，表示密钥。第二行为待解密字符串，由大写字母组成，长度不超过10000。
 
-## 输出
+##### 输出
 
 每一行输出解密后的明文。
 
-## 样例输入
+##### 样例输入
 
 ```
-1ABCXYZ ZDBSF
+ABCXYZ ZDBSF
 ```
 
-## 样例输出
+##### 样例输出
 
 ```
 HELLO
 ```
 
-## 提示
+##### 提示
 
-## 来源
-
-[河海ACM前辈-裴正](http://acm.hhu.edu.cn/JudgeOnline/problemset.php?search=河海ACM前辈-裴正)
+##### 来源
 
 这个模拟题实现方面来说不难，但是题意很难理解。。。。
 
@@ -249,25 +251,17 @@ HELLO
 
 1X 2E 3D 4C 5R 6F 7V 8T 9G 10B 11Y 12H 13N 14U 15J 16M 17I 18K 19O 20L 21P 22Q 23A 24Z 25W 26S
 
-
-
 第二个转子：
 
 1Y 2U 3I 4O 5P 6A 7S 8D 9F 10G 11H 12J 13K 14L 15Z 16X 17C 18V 19B 20N 21M 22Q 23W 24E 25R 26T
-
-
 
 第三个转子：
 
 1Z 2C 3B 4M 5W 6R 7Y 8I 9P 10S 11F 12H 13K 14X 15V 16N 17Q 18E 19T 20U 21O 22A 23D 24G 25J 26L
 
-
-
 反射器：
 
 1Z 2Y 3X 4W 5V 6U 7T 8S 9R 10Q 11P 12O 13N 14M 15L 16K 17J 18I 19H 20G 21F 22E 23D 24C 25B 26A
-
-
 
 那样例输入的HELLO的H为例，当H经过三个转子传入反射器的时候变为字母X，反射器传出C，此时就要倒推回去。X在反射器中是第3个字母，在正常顺序字母表中第3个字母是C，所以寻找C在第三个转子中的位置，为2。正常顺序中第2个字母为B，所以寻找第二个转子中B的位置，为19。正常顺序第19个字母是S，那么在第一个转子中寻找S，为26。那么正常顺序中第26个字母为Z，因此加密出来的字母是Z
 
@@ -277,404 +271,119 @@ HELLO
 
 ```cpp
 #include <iostream>
-
-
-
 #include <cstring>
-
-
-
 #include <cstdio>
-
-
 
 using namespace  std;
 
-
-
 struct password{
-
-
-
     char name;
-
-
-
     string unit;
-
-
-
 };
 
-
-
 password a={'A',"QAZWSXEDCRFVTGBYHNUJMIKOLP"};
-
-
-
 password b={'B',"QWERTYUIOPASDFGHJKLZXCVBNM"};
-
-
-
 password c={'C',"QETUOADGJLZCBMWRYIPSFHKXVN"};
-
-
 
 string react="ZYXWVUTSRQPONMLKJIHGFEDCBA",medi,abc="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-
-
 void change_first(string &a,char t){
-
-
-
     int i;
-
-
-
     for(i=0;i<26;i++){
-
-
-
         if(a[i]==t){
-
-
-
             medi=a.substr(0,i);
-
-
-
             break;
-
-
-
         }
-
-
-
     }
-
-
-
     a=a.substr(i,26-i);
-
-
-
     a=a+medi;
-
-
-
 }
-
-
-
 void change1(int &middle,string a){
-
-
-
     char t=a[middle];
-
-
-
     int i;
-
-
-
     for(i=0;i<26;i++){
-
-
-
         if(abc[i]==t){
-
-
-
             middle=i;
-
-
-
             break;
-
-
-
         }
-
-
-
     }
-
-
-
 }
-
-
-
 void change2(char &re_middle,string a){
-
-
-
     int i;
-
-
-
     for(i=0;i<26;i++){
-
-
-
         if(a[i]==re_middle){
-
-
-
             break;
-
-
-
         }
-
-
-
     }
-
-
-
     re_middle=abc[i];
-
-
-
 }
-
-
 
 void add1(string &a){
 
-
-
     medi=a.substr(0,1);
-
-
-
     a=a.substr(1,25);
-
-
-
     a=a+medi;
-
-
-
 }
 
 
-
 int main(){
-
-
-
     int i,j,k,n;
-
-
-
     string t;
-
-
-
     scanf("%d",&n);
-
-
-
     while(n--){
-
-
-
         password sel[3];
-
-
-
         sel[0]=a,sel[1]=b,sel[2]=c;
-
-
-
         string zhuanzi[3];
-
-
-
         cin>>t;
-
-
-
         for(i=0;i<3;i++){
-
-
-
             for(j=0;j<3;j++){
-
-
-
                 if(sel[j].name==t[i]){
-
-
-
                     zhuanzi[i]=sel[j].unit;
-
-
-
                     break;
-
-
-
                 }
-
-
-
             }
-
-
-
         }
-
-
-
         for(i=0;i<3;i++){
-
-
-
             change_first(zhuanzi[i],t[3+i]);
-
-
-
         }
-
-
-
         cin>>t;
-
-
-
         k=0;
-
-
-
         while(t[k]!='\0'){
-
-
-
             int middle;
-
-
-
             for(i=0;i<26;i++){
-
-
-
                 if(abc[i]==t[k]){
-
-
-
                     middle=i;
-
-
-
                     break;
 
-
-
                 }
-
-
-
             }
-
-
 
             for(i=0;i<3;i++){
-
-
-
                 change1(middle,zhuanzi[i]);
 
 
-
             }
-
-
-
-            
-
-
-
             char re_middle=react[middle];
-
-
-
             for(i=2;i>=0;i--){
-
-
-
                 change2(re_middle,zhuanzi[i]);
 
-
-
             }
-
-
-
             cout<<re_middle;
-
-
-
-            
-
-
-
             k++;
-
-
-
             add1(zhuanzi[0]);
-
-
-
             if(k%26==0&&k!=0){
-
-
-
                 add1(zhuanzi[1]);
 
-
-
             }
-
-
-
             if(k%(26*26)==0&&k!=0){
-
-
 
                 add1(zhuanzi[2]);
 
-
-
             }
 
-
-
         }
-
-
-
         cout<<endl;
-
-
-
-        
-
-
-
     }
-
-
-
     return 0;
-
-
-
 }
 ```
