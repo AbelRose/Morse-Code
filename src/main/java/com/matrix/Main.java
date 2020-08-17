@@ -1,21 +1,13 @@
 package com.matrix;
 
-import java.util.Arrays;
+import com.matrix.dom4j.Dom4j;
+import com.matrix.enigma.Enigma;
+import com.matrix.file.ReadFile;
+import com.matrix.sound.Sound;
+
 import java.util.Scanner;
 
 public class Main {
-
-    /**
-     *
-     * Todo
-     *
-     * 实现 噪音 (已经实现)
-     *
-     * 设置另一个线程
-     *
-     * 实现 用英格玛进行加密后再进行转换
-     *
-     */
 
     public static void main(String[] args) throws Exception {
 //        Dom4j dom4j = new Dom4j();
@@ -24,11 +16,23 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("输入要读取的文件名:");
         String file = sc.next();
+        System.out.println("========================");
+
+
+        System.out.println("Enigma:");
+        String sourceFile = ReadFile.readFile(file);
+        Enigma enigma = new Enigma();
+        String cipherFile = enigma.enigma(sourceFile);
+        System.out.println(cipherFile);
+        System.out.println("========================");
+
+
+
         System.out.println("MorseCode为:");
 //        String line = ReadFile.readFile(""); //convert test to input.txt    String line = rf.readFile();
 //      1 a B       System.out.println(line);
-        String line = ReadFile.readFile(file);
-        String[] split = line.split(" ");
+//        String line = ReadFile.readFile(file);
+        String[] split = cipherFile.split(" ");
         StringBuilder output = new StringBuilder();
         for (String s : split) { // for (int i = 0; i < split.length; i++)
             input = s;

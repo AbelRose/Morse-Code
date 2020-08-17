@@ -1,6 +1,6 @@
 package com.matrix.enigma.scrambler.reflector;
 
-import static com.johnflan.enigma.scrambler.Util.toInt;
+import static com.matrix.enigma.scrambler.Util.toInt;
 
 public class ReflectorImpl implements Reflector {
 

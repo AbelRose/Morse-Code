@@ -1,13 +1,13 @@
 package com.matrix.enigma.scrambler;
 
-import com.johnflan.enigma.scrambler.plugboard.Plugboard;
-import com.johnflan.enigma.scrambler.plugboard.PlugboardImpl;
-import com.johnflan.enigma.scrambler.reflector.Reflector;
-import com.johnflan.enigma.scrambler.reflector.ReflectorImpl;
-import com.johnflan.enigma.scrambler.reflector.ReflectorType;
-import com.johnflan.enigma.scrambler.rotor.Rotor;
-import com.johnflan.enigma.scrambler.rotor.RotorImpl;
-import com.johnflan.enigma.scrambler.rotor.RotorType;
+import com.matrix.enigma.scrambler.plugboard.Plugboard;
+import com.matrix.enigma.scrambler.plugboard.PlugboardImpl;
+import com.matrix.enigma.scrambler.reflector.Reflector;
+import com.matrix.enigma.scrambler.reflector.ReflectorImpl;
+import com.matrix.enigma.scrambler.reflector.ReflectorType;
+import com.matrix.enigma.scrambler.rotor.Rotor;
+import com.matrix.enigma.scrambler.rotor.RotorImpl;
+import com.matrix.enigma.scrambler.rotor.RotorType;
 
 public class ScramblerImpl implements Scrambler{
 	

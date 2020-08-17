@@ -1,7 +1,7 @@
 package com.matrix.enigma.scrambler.rotor;
 
-import static com.johnflan.enigma.scrambler.Util.toChar;
-import static com.johnflan.enigma.scrambler.Util.toInt;
+import static com.matrix.enigma.scrambler.Util.toChar;
+import static com.matrix.enigma.scrambler.Util.toInt;
 
 public class RotorImpl implements Rotor{
 	

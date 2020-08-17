@@ -1,4 +1,4 @@
-package com.abel;
+package com.matrix.todo;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 
-class AddNoise {
+class TextNoise {
     public static void main(String[] args) {
         Random random = new Random();
         int randomNum = random.nextInt(5);

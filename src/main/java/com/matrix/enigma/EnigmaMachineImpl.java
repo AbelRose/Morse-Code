@@ -1,8 +1,8 @@
 package com.matrix.enigma;
 
-import com.johnflan.enigma.scrambler.Scrambler;
+import com.matrix.enigma.scrambler.Scrambler;
 
-import static com.johnflan.enigma.scrambler.Util.ASCII_OFFSET;
+import static com.matrix.enigma.scrambler.Util.ASCII_OFFSET;
 
 public class EnigmaMachineImpl implements EnigmaMachine{
 	

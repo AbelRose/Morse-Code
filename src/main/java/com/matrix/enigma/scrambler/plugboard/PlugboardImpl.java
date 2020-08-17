@@ -1,6 +1,6 @@
 package com.matrix.enigma.scrambler.plugboard;
 
-import static com.johnflan.enigma.scrambler.Util.*;
+import static com.matrix.enigma.scrambler.Util.*;
 
 public class PlugboardImpl implements Plugboard {
 	

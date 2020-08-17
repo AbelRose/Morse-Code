@@ -1,9 +1,9 @@
 package com.matrix.enigma;
 
-import com.johnflan.enigma.scrambler.ScramblerImpl;
-import com.johnflan.enigma.scrambler.plugboard.Plugboard;
-import com.johnflan.enigma.scrambler.reflector.ReflectorType;
-import com.johnflan.enigma.scrambler.rotor.RotorType;
+import com.matrix.enigma.scrambler.ScramblerImpl;
+import com.matrix.enigma.scrambler.plugboard.Plugboard;
+import com.matrix.enigma.scrambler.reflector.ReflectorType;
+import com.matrix.enigma.scrambler.rotor.RotorType;
 
 public class EnigmaMachineBuilder {
 	

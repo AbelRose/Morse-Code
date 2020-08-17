@@ -1,4 +1,4 @@
-package com.matrix;
+package com.matrix.sound;
 
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
